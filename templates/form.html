@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Guest Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=2.0">
+</head>
+<body>
+  <h1>Guest Details</h1>
+  <form method="POST">
+    <label for="sr_no">Sr No: </label>
+    <input type="text" id="sr_no" name="sr_no" value="{{ person['Sr. No.'] }}" ><br>
+
+    <label for="first_name">First Name: </label>
+    <input type="text" id="first_name" name="first_name" value="{{ person['First Name'] }}" readonly><br>
+
+    <label for="middle_name">Middle Name: </label>
+    <input type="text" id="middle_name" name="middle_name" value="{{ person['Middle Name'] }}" readonly><br>
+
+    <label for="last_name">Last Name: </label>
+    <input type="text" id="last_name" name="last_name" value="{{ person['Last Name'] }}" readonly><br>
+
+    <label for="primary_phone">Primary Phone: </label>
+    <input type="text" id="primary_phone" name="primary_phone" value="{{ person['Primary Phone'] }}" readonly><br>
+
+    <label for="mobile_phone">Mobile Phone: </label>
+    <input type="text" id="mobile_phone" name="mobile_phone" value="{{ person['Mobile Phone'] }}" readonly><br>
+
+    <label for="home_street">Home Street: </label>
+    <input type="text" id="home_street" name="home_street" value="{{ person['Home Street'] }}" readonly><br>
+
+    <label for="home_city">Home City: </label>
+    <input type="text" id="home_city" name="home_city" value="{{ person['Home City'] }}" readonly><br>
+
+    {% for col in columns[8:] %}
+      <label for="{{ col }}">{{ col }}: </label>
+      <input type="text" id="{{ col }}" name="{{ col }}" value="{{ person[col] }}"><br>
+    {% endfor %}
+
+    <input type="submit" value="Save & Next">
+  </form>
+
+  <form method="POST" action="{{ url_for('start') }}">
+    <label for="goto_sr_no">Go to Sr No: </label>
+    <input type="text" id="goto_sr_no" name="sr_no">
+    <input type="submit" value="Go">
+  </form>
+
+</body>
+</html>
